@@ -66,7 +66,11 @@ int main(int argc, char** argv)
 
 				rectangle(color_mat, object, color[num % 4], 2);
 				int baseLine = 0;
-			
+			        Size labelSize = getTextSize(ss, FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
+				Point LB(x0, y1 + labelSize.height);
+				rectangle(color_mat, Rect(Point(LB.x, LB.y - labelSize.height),
+					Size(labelSize.width, labelSize.height + baseLine)), color[num % 4], -1);
+				putText(color_mat, ss, LB, FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 0));
 			}
 		}
 		imshow(window_name, color_mat);
